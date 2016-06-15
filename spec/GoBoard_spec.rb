@@ -1,6 +1,6 @@
 require_relative '../lib/GoBoard'
 
-describe GoBoard do
+describe "Creating a Go Board" do
   it "is defined" do
     expect {board = GoBoard.new}.not_to raise_error
   end
@@ -32,5 +32,15 @@ describe GoBoard do
     end
     expect(ex.class).to be (ArgumentError)
     expect(ex.message).to eq("Supported sizes include 9, 13, & 19")
+  end
+end
+
+describe "Adding pieces to the board" do
+  before(:example) do
+    @board = GoBoard.new
+  end
+  
+  it "is initially empty" do
+    expect(@board.contents(0, 0)).to eq(:empty)
   end
 end

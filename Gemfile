@@ -1,3 +1,8 @@
 source "https://rubygems.org"
 
-gem "rspec"
+group :development do
+  gem 'rspec'
+  gem 'guard-rspec', require: false
+  gem 'growl-rspec'
+  #gem 'ruby_gntp'
+end

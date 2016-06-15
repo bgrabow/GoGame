@@ -1,5 +1,5 @@
 describe do
   specify "fails" do
-    expect(false).should be true
+    expect(false).to be true
   end
 end

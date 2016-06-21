@@ -35,12 +35,39 @@ describe "Creating a Go Board" do
   end
 end
 
-describe "Adding pieces to the board" do
+describe "Board contents" do
   before(:example) do
     @board = GoBoard.new
   end
   
-  it "is initially empty" do
-    expect(@board.contents(0, 0)).to eq(:empty)
+  it "are initially empty" do
+    expect(@board.contents(1, 1)).to eq(:empty)
+    expect(@board.contents(@board.size, @board.size)).to eq(:empty)
+  end
+  
+  it "are nil when out of bounds" do
+    expect(@board.contents(0, 0)).to eq(nil)
+  end
+  
+  it "has contents :black when given :black" do
+    @board.put(1, 1, :black)
+    expect(@board.contents(1,1)).to eq(:black)
+  end
+  
+  it "has contents :white when given :white" do
+    @board.put(1, 1, :white)
+    expect(@board.contents(1,1)).to eq(:white)
+  end
+  
+  it "doesn't change contents when a piece is placed out of bounds" do
+    @board.put(0, 0, :black)
+    @board.put(@board.size + 1, @board.size + 1, :white)
+    expect(@board.contents(0, 0)).to eq(nil)
+    expect(@board.contents(@board.size + 1, @board.size + 1)).to eq(nil)
+  end
+  
+  it "returns previous value when given a new value" do
+    @board.put(1, 1, :white)
+    expect(@board.put(1, 1, :black)).to eq(:white)
   end
 end

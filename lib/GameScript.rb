@@ -6,7 +6,7 @@ class GoController
   end
 
   def initialize
-    display = GoBoardDisplay.new(self)
+    display = GoBoardDisplay.new(context: self)
     display.show_board
     display.mainloop
   end

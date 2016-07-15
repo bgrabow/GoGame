@@ -16,6 +16,22 @@ class GoBoardDisplay
     @button.command { context.alert }
   end
 
+  def show_board
+    @canvas ||= new_canvas
+    @horizontal_lines = [] 
+    (1..19).each_with_index do |y|
+      @horizontal_lines << TkcLine.new(@canvas, 10, y*20, 90, y*20)
+    end
+  end
+
+  def new_canvas
+    canvas = TkCanvas.new('height' => 600, 'width' => 600, 'background' => "#CCCCCC") { pack }
+  end
+
+
+  def show_menu
+  end
+
   def change_label
     @label.configure('text' => 'Goodbye world')
   end

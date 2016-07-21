@@ -1,4 +1,4 @@
-require 'tk'
+#require 'tk'
 
 class GoGui
   def root

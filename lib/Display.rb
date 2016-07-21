@@ -28,14 +28,6 @@ class Display
   end
 
   def hoshi_coords(size:)
-    return [
-      [3,3],
-      [3,7],
-      [7,3],
-      [7,7],
-      [5,5]
-    ]
-
     case size
     when 9
       [

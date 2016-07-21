@@ -7,8 +7,8 @@ class View
     end
     @canvas = TkCanvas.new(
       parent: @root,
-      'height' => 500,
-      'width' => 500,
+      'height' => 900,
+      'width' => 1000,
       'background'=>'#CCCCCC'
     ) { pack }
   end

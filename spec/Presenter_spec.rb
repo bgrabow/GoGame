@@ -34,6 +34,20 @@ describe "Goban" do
     end
   end
 
+  it "draws Hoshi for 13x13 board" do
+    view = double()
+    allow(view).to receive(:new_hoshi)
+    size = 13
+    goban = ViewModel::Goban.new(size: size,
+                                 new_line: lambda {},
+                                 new_hoshi: lambda {|center| view.new_hoshi(center)}
+                                )
+    goban.draw_hoshi
+    [[4,4],[4,10],[10,4],[10,10],[7,7]].each do |point|
+      test_create_hoshi(x: point[0], y: point[1], spy: view)
+    end
+  end
+
   it "draws Hoshi for 9x9 board" do
     view = double()
     allow(view).to receive(:new_hoshi)
@@ -48,12 +62,12 @@ describe "Goban" do
     end
   end
 
-  def test_new_horizontal_line(row, view_spy)
-    expect(view_spy).to have_received(:new_line).with([1, row], [9, row])
+  def test_new_horizontal_line(row, spy)
+    expect(spy).to have_received(:new_line).with([1, row], [9, row])
   end
 
-  def test_new_vertical_line(col, view_spy)
-    expect(view_spy).to have_received(:new_line).with([col, 1], [col, 9])
+  def test_new_vertical_line(col, spy)
+    expect(spy).to have_received(:new_line).with([col, 1], [col, 9])
   end
 
   def test_create_hoshi(x:, y:, spy:)

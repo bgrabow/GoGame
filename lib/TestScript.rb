@@ -1,6 +1,6 @@
 require_relative 'View'
-require_relative 'Display'
+require_relative 'Presenter'
 
 view = View.new
-display = Display.new(size: 9, view: view)
+display = Presenter.new(size: 9, view: view)
 view.mainloop

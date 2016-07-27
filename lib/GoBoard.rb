@@ -38,8 +38,6 @@ class GoBoard
   end
   
   def each
-    #return enum_for(:each) unless block_given?
-    
     @board.each_key do |k|
       point = {
         x: k[0],

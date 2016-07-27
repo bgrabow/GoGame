@@ -6,6 +6,11 @@ class Display
     @view = view
     @grid = generate_grid(size: @size)
     @hoshi = generate_hoshi(size: @size)
+    @pieces = {}
+  end
+
+  def display_board(board)
+
   end
 
   def generate_grid(size:)

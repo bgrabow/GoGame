@@ -1,0 +1,35 @@
+User interactions:
+------------
+Click the board
+
+
+Where was the click (display pixels)
+Where was the click (board coords) - exception off board
+Game rule logic (legal move?)
+Board logic (occupied space?) - replace existing stone?
+Game logic (whose turn it is)
+Show board
+Iterate pieces
+Board coordinates to display pixels
+Draw Tk shape
+Change player
+Change cursor color
+
+
+Units
+-----
+1. Tk bindings - translates view model objects to Tk library calls
+2. View model - keeps track of visible stones, grid, grid labels, in discrete board coordinates. This connects a visible Tk widget to a logical game component.
+3. View - Translates geometry of view model into display coords and delegates to Tk bindings. Sends click events to View model.
+4. Model - keeps track of logical game components, encodes their rules for interaction
+
+
+Presenter
+  -> Game object (board w/ size, stone w/ position)
+  <- GUI object (grid line, circle, rectangle)
+  ++ Stone GUI objects, keyed to stone Game objects
+  -  Draw stones (stones)
+  
+
+
+

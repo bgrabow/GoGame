@@ -1,19 +1,10 @@
 require_relative "../lib/Presenter.rb"
+require_relative "../lib/Presentation/Goban.rb"
+
+
 
 describe "Presenter" do
   context "when creating a Presenter" do
-  end
-
-  context "when displaying stones" do
-    skip "creates new stones the first time" do
-      view_spy = spy("view")
-      position = [2, 3]
-      value = :white
-      board = [[position, value]]
-      Presenter.new(size: 9, view: view_spy)
-      Presenter.display_board(board)
-      expect(view_spy).to have_received(:new_stone).with(2, 3, :white)
-    end
   end
 end
 
@@ -23,7 +14,7 @@ describe "Goban" do
     view = double()
     allow(view).to receive(:new_line)
     size = 9
-    goban = ViewModel::Goban.new(size: size,
+    goban = Presentation::Goban.new(size: size,
                          new_line: lambda {|start, finish| view.new_line(start, finish)},
                          new_hoshi: lambda {}
                         )
@@ -38,12 +29,12 @@ describe "Goban" do
     view = double()
     allow(view).to receive(:new_hoshi)
     size = 19
-    goban = ViewModel::Goban.new(size: size,
+    goban = Presentation::Goban.new(size: size,
                                  new_line: lambda {},
                                  new_hoshi: lambda {|center| view.new_hoshi(center)}
                                 )
     goban.draw_hoshi
-    ViewModel::Goban.hoshi_coords(size).each do |point|
+    Presentation::Goban.hoshi_coords(size).each do |point|
       test_create_hoshi(x: point[0], y: point[1], spy: view)
     end
   end
@@ -52,7 +43,7 @@ describe "Goban" do
     view = double()
     allow(view).to receive(:new_hoshi)
     size = 13
-    goban = ViewModel::Goban.new(size: size,
+    goban = Presentation::Goban.new(size: size,
                                  new_line: lambda {},
                                  new_hoshi: lambda {|center| view.new_hoshi(center)}
                                 )
@@ -66,7 +57,7 @@ describe "Goban" do
     view = double()
     allow(view).to receive(:new_hoshi)
     size = 9
-    goban = ViewModel::Goban.new(size: size,
+    goban = Presentation::Goban.new(size: size,
                                  new_line: lambda {},
                                  new_hoshi: lambda {|center| view.new_hoshi(center)}
                                 )

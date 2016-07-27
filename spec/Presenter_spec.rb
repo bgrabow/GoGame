@@ -34,6 +34,20 @@ describe "Goban" do
     end
   end
 
+  it "draws Hoshi for 19x19 board" do
+    view = double()
+    allow(view).to receive(:new_hoshi)
+    size = 19
+    goban = ViewModel::Goban.new(size: size,
+                                 new_line: lambda {},
+                                 new_hoshi: lambda {|center| view.new_hoshi(center)}
+                                )
+    goban.draw_hoshi
+    ViewModel::Goban.hoshi_coords(size).each do |point|
+      test_create_hoshi(x: point[0], y: point[1], spy: view)
+    end
+  end
+
   it "draws Hoshi for 13x13 board" do
     view = double()
     allow(view).to receive(:new_hoshi)

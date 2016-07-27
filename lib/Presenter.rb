@@ -35,12 +35,12 @@ class ViewModel::Goban
   end
 
   def draw_hoshi
-    hoshi_coords(@size).each do |point|
+    ViewModel::Goban.hoshi_coords(@size).each do |point|
       @new_hoshi.(point)
     end
   end
 
-  def hoshi_coords(size)
+  def self.hoshi_coords(size)
     case size
     when 9
       [[3,3],[3,7],[7,3],[7,7],[5,5]]

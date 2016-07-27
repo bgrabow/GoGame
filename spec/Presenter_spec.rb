@@ -5,6 +5,12 @@ require_relative "../lib/Presentation/Goban.rb"
 
 describe "Presenter" do
   context "when creating a Presenter" do
+    it "delegates to the view" do
+      view = double()
+      allow(view).to receive(:new_line)
+      allow(view).to receive(:new_hoshi)
+      presenter = Presentation::Presenter.new(size: 9, view: view)
+    end
   end
 end
 

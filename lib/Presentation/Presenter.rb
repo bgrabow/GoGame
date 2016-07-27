@@ -1,4 +1,4 @@
-require_relative "Presentation/Goban"
+require_relative "Goban"
 
 module Presentation
   class Presenter

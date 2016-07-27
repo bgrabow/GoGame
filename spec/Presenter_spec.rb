@@ -1,4 +1,4 @@
-require_relative "../lib/Presenter.rb"
+require_relative "../lib/Presentation/Presenter.rb"
 require_relative "../lib/Presentation/Goban.rb"
 
 
